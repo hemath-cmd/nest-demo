@@ -6,14 +6,12 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // 1. ValidationPipe - DTO Validation Work ஆக
   app.useGlobalPipes(new ValidationPipe({
-    whitelist: true,           // DTO-ல இல்லாத Property-அ Auto Remove பண்ணும்
-    forbidNonWhitelisted: true, // Extra Property வந்தா Error Throw பண்ணும்
-    transform: true,           // Type-அ Auto Convert பண்ணும்
+    whitelist: true,
+    forbidNonWhitelisted: true,
+    transform: true,
   }));
 
-  // 2. Swagger Setup - API Docs க்கு
   const config = new DocumentBuilder()
     .setTitle('Nest Demo API')
     .setDescription('Items CRUD API with Validation')
