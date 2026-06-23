@@ -10,7 +10,7 @@ export interface Item {
 
 @Injectable()
 export class ItemsService {
-  // 2. இங்க Type குடுத்தாச்சு Item[]
+  
   private items: Item[] = []; 
 
   findAll(): Item[] {
@@ -19,7 +19,7 @@ export class ItemsService {
 
   create(createItemDto: CreateItemDto): Item {
     const newItem: Item = {
-      id: Date.now(), // Temporary ID
+      id: Date.now(),
       ...createItemDto,
     };
     this.items.push(newItem);
